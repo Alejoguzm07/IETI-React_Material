@@ -13,6 +13,20 @@ import './Login.css'
 
 export class Login extends React.Component{
 
+    state = {
+        email: "",
+        pass:""    
+    }
+
+    clickHandler = ()=>{
+        var correctPass = localStorage.getItem(this.state.email);
+        if(correctPass === this.state.pass){
+            localStorage.setItem("isLogged", true);
+        }else{
+            localStorage.setItem("isLogged", false);
+        }
+    }
+
     render(){
         return (
             <React.Fragment>
@@ -26,7 +40,12 @@ export class Login extends React.Component{
                         <form className="form">
                             <FormControl margin="normal" required fullWidth>
                                 <InputLabel htmlFor="email">Email Address</InputLabel>
-                                <Input id="email" name="email" autoComplete="email" autoFocus />
+                                <Input 
+                                    id="email" 
+                                    name="email" 
+                                    autoComplete="email" 
+                                    autoFocus 
+                                    onChange={(e) => this.setState({ email: e.target.value })}/>
                             </FormControl>
                             <FormControl margin="normal" required fullWidth>
                                 <InputLabel htmlFor="password">Password</InputLabel>
@@ -35,6 +54,7 @@ export class Login extends React.Component{
                                     type="password"
                                     id="password"
                                     autoComplete="current-password"
+                                    onChange={(e) => this.setState({ pass: e.target.value })}
                                 />
                             </FormControl>
                             <Button
@@ -43,7 +63,7 @@ export class Login extends React.Component{
                                 variant="contained"
                                 color="primary"
                                 className="submit"
-                            >
+                                onClick={this.clickHandler()}>
                                 Sign in
                             </Button>
                         </form>

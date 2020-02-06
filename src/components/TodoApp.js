@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import logo from './logo.svg';
 import '../App.css';
 import {TodoList} from "./TodoList";
 import moment from "moment";
@@ -21,24 +20,17 @@ class TodoApp extends Component {
 
         return (
             <div className="App">
-                <header className="App-header">
-                    <img src={logo} className="App-logo" alt="logo"/>
-                    <h1 className="App-title">TODO React App</h1>
-                </header>
-
-                <br/>
-                <br/>
                 <form onSubmit={this.handleSubmit} className="todo-form">
                     <h3>New TODO</h3>
                     <label htmlFor="text" className="right-margin">
                         Text:
                     </label>
 
-                    <input
+                    <TextField
                         id="text"
                         onChange={this.handleTextChange}
                         value={this.state.text}>
-                    </input>
+                    </TextField>
 
                     <br/>
                     <br/>
@@ -47,6 +39,7 @@ class TodoApp extends Component {
                     </label>
 
                     <TextField
+                        onChange={this.handlePriorityChange}
                         id="priority"
                         type="number"
                         onChange={this.handlePriorityChange}
@@ -56,6 +49,7 @@ class TodoApp extends Component {
                     <br/>
 
                     <TextField
+                        onChange={this.handleDateChange}
                         id="due-date"
                         type="date"
                         label="date"
