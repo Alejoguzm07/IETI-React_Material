@@ -5,7 +5,7 @@ import { Login } from './components/Login';
 import { TodoApp } from './components/TodoApp';
 import {BrowserRouter as Router,Route,Switch} from 'react-router-dom'
 
-class App extends Component {
+export default class App extends Component {
 
     constructor(){
         super();
@@ -33,8 +33,6 @@ class App extends Component {
         );
     }
 }
-
-export default App;
 
 const mainView = () => (
     <div>
